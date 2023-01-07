@@ -1,4 +1,3 @@
-import { arrayBuffer } from "stream/consumers";
 import { getDates } from "./dateHelpers";
 
 async function selectDate() {

@@ -6,12 +6,16 @@ type SelectInputOption = {
 }
 
 type SelectInputProps = {
-  options: Array<SelectInputOption>
+  value: string;
+  onChange: Function;
+  options: Array<SelectInputOption>;
+  placeholder?: string;
 }
 
-function SelectInput({ options }: SelectInputProps) {
+function SelectInput({ value, onChange, options, placeholder }: SelectInputProps) {
   return (
-    <select>
+    <select value={value} onChange={e => onChange(e.target.value)}>
+      <option value="" disabled>{placeholder}</option>
       {options.map((option: SelectInputOption) =>
         <option key={option.value} value={option.value}>{option.label}</option>
       )}

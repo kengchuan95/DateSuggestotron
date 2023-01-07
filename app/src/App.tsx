@@ -5,11 +5,15 @@ import Header from './Header';
 import Button from './Button';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
-import {selectDate} from './dateMath';
-import { getDates } from './dateHelpers';
+import DateIdea from './DateIdea';
+
+import { selectDate } from './dateMath';
+import { addDate } from './dateHelpers';
 
 function App() {
-  const [dateIdea, setDateIdea] = useState({ DateIdea: '', DateCategory: '', Status: '' });
+  const [suggestedDate, setSuggestedDate] = useState({});
+  const [dateIdea, setDateIdea] = useState('');
+  const [dateCategory, setDateCategory] = useState('');
 
   const dateCategories = [
     { label: 'Indoor', value: 'Indoor' },
@@ -19,19 +23,33 @@ function App() {
   ];
 
   const getDateHandler = async () => {
-    const allDates = await getDates();
     const selectedDate = await selectDate();
-    setDateIdea(selectedDate);
+    setSuggestedDate(selectedDate);
+  }
+
+  const addDateHandler = async () => {
+    await addDate(dateIdea, dateCategory);
+    setDateIdea('');
+    setDateCategory('');
   }
 
   return (
     <div className="App">
       <Header />
       <Button text="Get a date" onClick={getDateHandler} />
-      <div>{dateIdea?.DateIdea}</div>
-      <TextInput />
-      <SelectInput options={dateCategories} />
-      {/* <Button text="Add a date" /> */}
+      <DateIdea info={suggestedDate} />
+      <TextInput
+        value={dateIdea}
+        onChange={setDateIdea}
+        placeholder="Enter a date idea"
+      />
+      <SelectInput
+        value={dateCategory}
+        onChange={setDateCategory}
+        options={dateCategories}
+        placeholder="Select a category"
+      />
+      <Button text="Add a date" onClick={addDateHandler} />
     </div>
   );
 }
