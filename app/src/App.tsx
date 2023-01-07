@@ -5,11 +5,11 @@ import Header from './Header';
 import Button from './Button';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
-
+import {selectDate} from './dateMath';
 import { getDates } from './dateHelpers';
 
 function App() {
-  const [dateIdea, setDateIdea] = useState({ DateIdea: '' });
+  const [dateIdea, setDateIdea] = useState({ DateIdea: '', DateCategory: '', Status: '' });
 
   const dateCategories = [
     { label: 'Indoor', value: 'Indoor' },
@@ -20,7 +20,8 @@ function App() {
 
   const getDateHandler = async () => {
     const allDates = await getDates();
-    setDateIdea(allDates.data[0]);
+    const selectedDate = await selectDate();
+    setDateIdea(selectedDate);
   }
 
   return (
