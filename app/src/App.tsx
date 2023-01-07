@@ -5,11 +5,12 @@ import Header from './Header';
 import Button from './Button';
 import TextInput from './TextInput';
 import SelectInput from './SelectInput';
+import DateIdea from './DateIdea';
 
 import { getDates } from './dateHelpers';
 
 function App() {
-  const [dateIdea, setDateIdea] = useState({ DateIdea: '' });
+  const [suggestedDate, setSuggestedDate] = useState({});
 
   const dateCategories = [
     { label: 'Indoor', value: 'Indoor' },
@@ -20,14 +21,14 @@ function App() {
 
   const getDateHandler = async () => {
     const allDates = await getDates();
-    setDateIdea(allDates.data[0]);
+    setSuggestedDate(allDates.data[0]);
   }
 
   return (
     <div className="App">
       <Header />
       <Button text="Get a date" onClick={getDateHandler} />
-      <div>{dateIdea?.DateIdea}</div>
+      <DateIdea info={suggestedDate} />
       <TextInput />
       <SelectInput options={dateCategories} />
       {/* <Button text="Add a date" /> */}
