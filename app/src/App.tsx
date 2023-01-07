@@ -7,7 +7,8 @@ import TextInput from './TextInput';
 import SelectInput from './SelectInput';
 import DateIdea from './DateIdea';
 
-import { getDates, addDate } from './dateHelpers';
+import { selectDate } from './dateMath';
+import { addDate } from './dateHelpers';
 
 function App() {
   const [suggestedDate, setSuggestedDate] = useState({});
@@ -22,8 +23,8 @@ function App() {
   ];
 
   const getDateHandler = async () => {
-    const allDates = await getDates();
-    setSuggestedDate(allDates.data[0]);
+    const selectedDate = await selectDate();
+    setSuggestedDate(selectedDate);
   }
 
   const addDateHandler = async () => {
