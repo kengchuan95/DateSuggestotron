@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/DateSuggestotron/static/css/main.073c9b0a.css",
+    "main.js": "/DateSuggestotron/static/js/main.5057c8ac.js",
+    "static/js/787.c01449a4.chunk.js": "/DateSuggestotron/static/js/787.c01449a4.chunk.js",
+    "index.html": "/DateSuggestotron/index.html",
+    "main.073c9b0a.css.map": "/DateSuggestotron/static/css/main.073c9b0a.css.map",
+    "main.5057c8ac.js.map": "/DateSuggestotron/static/js/main.5057c8ac.js.map",
+    "787.c01449a4.chunk.js.map": "/DateSuggestotron/static/js/787.c01449a4.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.073c9b0a.css",
+    "static/js/main.5057c8ac.js"
+  ]
+}
