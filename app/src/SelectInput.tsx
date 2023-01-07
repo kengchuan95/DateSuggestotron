@@ -13,7 +13,7 @@ function SelectInput({ options }: SelectInputProps) {
   return (
     <select>
       {options.map((option: SelectInputOption) =>
-        <option value={option.value}>{option.label}</option>
+        <option key={option.value} value={option.value}>{option.label}</option>
       )}
     </select>
   );

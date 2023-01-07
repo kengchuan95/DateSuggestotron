@@ -2,11 +2,11 @@ import React from 'react';
 
 type ButtonProps = {
   text: string;
-  onClick?: Function;
+  onClick: Function;
 }
 
 function Button({ text, onClick }: ButtonProps) {
-  return <button onClick={() => onClick}>{text}</button>;
+  return <button onClick={() => onClick()}>{text}</button>;
 }
 
 export default Button;
